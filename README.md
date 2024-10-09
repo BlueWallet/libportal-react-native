@@ -1,31 +1,15 @@
 # libportal-react-native
 
-React native bindings for the Portal SDK
+React native bindings for the Portal SDK.
 
-## Installation
-
-```sh
-npm install libportal-react-native
-```
+Precompiled Portal binaries included (see https://github.com/TwentyTwoHW/portal-software)
 
 ## Usage
 
-```js
-import { multiply } from 'libportal-react-native';
+Add to `package.json`:
 
-// ...
-
-const result = await multiply(3, 7);
-```
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+* `"libportal-react-native": "github:BlueWallet/libportal-react-native#7a28253a10812fdad5dfda03ff34ef3b7f0dbca4",`
 
 ## License
 
 MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
