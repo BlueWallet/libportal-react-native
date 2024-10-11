@@ -6,6 +6,8 @@ RCT_EXTERN_METHOD(constructor: (BOOL)useFastOps
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(destructor)
+
 RCT_EXTERN_METHOD(poll: (RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
