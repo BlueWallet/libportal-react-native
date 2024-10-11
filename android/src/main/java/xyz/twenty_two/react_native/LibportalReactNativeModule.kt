@@ -11,6 +11,7 @@ import com.facebook.react.bridge.WritableNativeMap
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 import xyz.twenty_two.PortalSdk
@@ -19,7 +20,7 @@ import xyz.twenty_two.GenerateMnemonicWords
 class LibportalReactNativeModule(reactContext: ReactApplicationContext) :
   ReactContextBaseJavaModule(reactContext) {
 
-  val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
+  var scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
   var instance: PortalSdk? = null
 
   override fun getName(): String {
@@ -28,10 +29,15 @@ class LibportalReactNativeModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun constructor(useFastOps: Boolean, promise: Promise) {
-    if (instance == null) {
-      instance = PortalSdk(useFastOps)
-      promise.resolve(null)
-    }
+    scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
+    instance = PortalSdk(useFastOps)
+    promise.resolve(null)
+  }
+
+  @ReactMethod
+  fun destructor() {
+    scope.cancel()
+    instance = null
   }
 
   @ReactMethod

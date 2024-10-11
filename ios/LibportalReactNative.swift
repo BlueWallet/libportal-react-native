@@ -29,6 +29,8 @@ class LibportalReactNative: NSObject {
         self.sdk = PortalSdk(useFastOps: useFastOps)
         resolve(nil)
     }
+
+    @objc func destructor() -> Void {}
     
     @objc func poll(_ resolve: @escaping RCTPromiseResolveBlock, withRejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         Task {

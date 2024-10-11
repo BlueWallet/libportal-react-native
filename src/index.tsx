@@ -23,6 +23,10 @@ export class PortalSdk {
       .catch((e: any) => console.warn(e))
   }
 
+  destroy() {
+    LibportalReactNative.destructor()
+  }
+
   poll(): Promise<NfcOut> {
     return LibportalReactNative.poll()
   }
