@@ -160,7 +160,20 @@ class LibportalReactNativeModule(reactContext: ReactApplicationContext) :
   fun resume(promise: Promise) {
     try {
       scope.launch {
-        // instance!!.resume()
+        instance!!.resume()
+        promise.resolve(null)
+      }
+    } catch (e: Exception) {
+      promise.reject(e)
+    }
+  }
+
+
+  @ReactMethod
+  fun debugWipeDevice(promise: Promise) {
+    try {
+      scope.launch {
+        instance!!.debugWipeDevice()
         promise.resolve(null)
       }
     } catch (e: Exception) {

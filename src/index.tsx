@@ -54,6 +54,10 @@ export class PortalSdk {
     return LibportalReactNative.generateMnemonic(words.toString(), network.toString(), pair_code);
   }
 
+  debugWipeDevice(): Promise<void> {
+    return LibportalReactNative.debugWipeDevice();
+  }
+
   restoreMnemonic(mnemonic: string, network: Network, pair_code?: string): Promise<void> {
     return LibportalReactNative.restoreMnemonic(mnemonic, network.toString(), pair_code);
   }
@@ -91,8 +95,8 @@ export enum Network {
 }
 
 export enum MnemonicWords {
-  Words12,
-  Words24,
+  Words12 = 'Words12',
+  Words24 = 'Words24',
 }
 
 export interface Descriptors {
