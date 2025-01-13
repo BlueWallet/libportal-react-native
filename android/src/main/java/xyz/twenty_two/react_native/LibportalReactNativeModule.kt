@@ -103,7 +103,7 @@ class LibportalReactNativeModule(reactContext: ReactApplicationContext) :
 
         val map = WritableNativeMap()
         map.putBoolean("initialized", status.initialized)
-        // map.putBoolean("unverified", status.unverified)
+        map.putBoolean("unverified", status.unverified ?: false)
         map.putBoolean("unlocked", status.unlocked)
         map.putString("network", status.network)
 
